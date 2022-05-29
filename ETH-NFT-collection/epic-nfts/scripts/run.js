@@ -1,12 +1,18 @@
 const main = async () => {
-    // コントラクトがコンパイルします
-    // コントラクトを扱うために必要なファイルが `artifacts` ディレクトリの直下に生成されます。
+    // コントラクトがコンパイルしますs
     const nftContractFactory = await hre.ethers.getContractFactory("MyEpicNFT");
     // Hardhat がローカルの Ethereum ネットワークを作成します。
     const nftContract = await nftContractFactory.deploy();
-    // コントラクトが Mint され、ローカルのブロックチェーンにデプロイされるまで待ちます。
     await nftContract.deployed();
     console.log("Contract deployed to:", nftContract.address);
+
+    // mint NFT
+    let txn = await nftContract.makeAnEpicNFT();
+    await txn.wait();
+    // mint again!!
+    txn = await nftContract.makeAnEpicNFT();
+    await txn.wait();
+    
 };
         
 // エラー処理を行っています。
