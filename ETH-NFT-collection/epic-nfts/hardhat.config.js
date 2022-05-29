@@ -1,4 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-etherscan");
 require('dotenv').config();
 
 const {API_URL_KEY, API_RINKEBY_KEY, PRIVATE_KEY} = process.env;
@@ -21,6 +22,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.4",
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_APIKEY
+  },
   paths: {                         
     artifacts: './../client/src/artifacts',  
   },

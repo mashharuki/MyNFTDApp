@@ -11,10 +11,12 @@ contract MashNFT is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    string[] baseSvgs = [
-        "",
-        ""
+    string[] Svgs = [
+        "https://i.ibb.co/Dg2TpZY/mash.jpg",
+        "https://i.ibb.co/jyFVQx8/IMG-6855.jpg"
     ];
+
+    event NewEpicNFTMinted(address sender, uint256 tokenId);
     
     constructor() ERC721("MashNFT", "MASH") {
         console.log("This is my MashNFT contract.");
@@ -24,7 +26,7 @@ contract MashNFT is ERC721URIStorage {
         uint256 newItemId = _tokenIds.current();
         // choose image        
         string memory image = pickRandomImage(newItemId);
-        string memory finalSvg = string(abi.encodePacked(image));
+        //string memory finalSvg = string(abi.encodePacked(image));
 
         // convert json data
         string memory json = Base64.encode(
@@ -34,9 +36,8 @@ contract MashNFT is ERC721URIStorage {
                         '{"name": "',
                         "MashNFT #", newItemId, 
                         '", "description": "Mash is a faithful dog!!"', 
-                        '"image": "data:image/svg+xml;base64,',
-                        //  add encoded data
-                        Base64.encode(bytes(finalSvg)),
+                        ', "image": "',
+                        image,
                         '"}'
                     )
                 )
@@ -55,6 +56,7 @@ contract MashNFT is ERC721URIStorage {
 
         console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
         _tokenIds.increment();
+        emit NewEpicNFTMinted(msg.sender, newItemId);
     }
 
     function random(string memory input) internal pure returns (uint256) {
@@ -66,8 +68,12 @@ contract MashNFT is ERC721URIStorage {
         uint256 rand = random(string(abi.encodePacked("RAND_Mash", Strings.toString(tokenId))));
         console.log("rand seed: ", rand);
 
-        rand = rand % baseSvgs.length;
+        rand = rand % Svgs.length;
         console.log("rand image: ", rand);
-        return baseSvgs[rand];
+        return Svgs[rand];
+    }
+
+    function totalSupply() public view returns (uint256) {
+        return _tokenIds.current();
     }
 }

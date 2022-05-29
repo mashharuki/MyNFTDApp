@@ -6,8 +6,13 @@ const main = async () => {
     await nftContract.deployed();
     console.log("Contract deployed to:", nftContract.address);
 
+    const mashNftContractFactory = await hre.ethers.getContractFactory("MashNFT");
+    const mashNftContract = await mashNftContractFactory.deploy();
+    await mashNftContract.deployed();
+    console.log("MashNFTContract deployed to:", mashNftContract.address);
+
     // mint NFT
-    let txn = await nftContract.makeAnEpicNFT();
+    let txn = await mashNftContract.makeAnEpicNFT();
     await txn.wait();
     console.log("Minted NFT #1");
     /*

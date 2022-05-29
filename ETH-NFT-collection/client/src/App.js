@@ -4,13 +4,13 @@ import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import { ethers } from "ethers";
 import MoonLoader from "react-spinners/MoonLoader";
-import myEpicNft from "./artifacts/contracts/MyEpicNFT.sol/MyEpicNFT.json";
+import myEpicNft from "./artifacts/contracts/MashNFT.sol/MashNFT.json";
 
 // Constantsを宣言する: constとは値書き換えを禁止した変数を宣言する方法です。
 const TWITTER_HANDLE = 'HARUKI05758694';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 const TOTAL_MINT_COUNT = 50;
-const CONTRACT_ADDRESS = "0x046283C3f76178dEAe802f95D831a4F956130dF4";
+const CONTRACT_ADDRESS = "0xb00Bb60074C60B6f0124A98eC5A156d4A7bf533a";
 const OPENSEA_LINK = `https://testnets.opensea.io/collections`;
 // スピナー用の変数
 const override = css`
