@@ -60,6 +60,7 @@ contract MyEpicNFT is ERC721URIStorage {
 
         console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
         _tokenIds.increment();
+        emit NewEpicNFTMinted(msg.sender, newItemId);
     }
 
     function random(string memory input) internal pure returns (uint256) {
@@ -88,5 +89,9 @@ contract MyEpicNFT is ERC721URIStorage {
         uint256 rand = random(string(abi.encodePacked("THIRD_WORD", Strings.toString(tokenId))));
         rand = rand % thirdWords.length;
         return thirdWords[rand];
+    }
+
+    function totalSupply() public view returns (uint256) {
+        return _tokenIds.current();
     }
 }

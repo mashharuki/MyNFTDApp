@@ -63,6 +63,9 @@
 
 .opensea-button {
   background-color: rgb(32, 129, 226);
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mint-count {
@@ -87,6 +90,10 @@
   color: white;
   font-size: 16px;
   font-weight: bold;
+}
+
+.spin-color {
+  color: white;
 }
 
 /* KeyFrames */
