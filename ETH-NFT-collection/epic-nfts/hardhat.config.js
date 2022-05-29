@@ -21,6 +21,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.4",
+  paths: {                         
+    artifacts: './../client/src/artifacts',  
+  },
   networks: {
     goerli: {
       url: API_URL_KEY,
