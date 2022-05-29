@@ -1,0 +1,2 @@
+# MyNFTDApp
+ジェネレティブNFTをmintするDApp用のプロジェクトリポジトリです。
