@@ -68,6 +68,18 @@
   margin-right: auto;
 }
 
+.rarible-button {
+  background-color: rgb(251, 255, 136);
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-show {
+  display: flex;
+  flex-direction: column;
+}
+
 .mint-count {
   color: white;
   font-size: 18px;

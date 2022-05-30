@@ -10,8 +10,9 @@ import myEpicNft from "./artifacts/contracts/MashNFT.sol/MashNFT.json";
 const TWITTER_HANDLE = 'HARUKI05758694';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 const TOTAL_MINT_COUNT = 50;
-const CONTRACT_ADDRESS = "0xb00Bb60074C60B6f0124A98eC5A156d4A7bf533a";
+const CONTRACT_ADDRESS = "0x9327a0fCaFe14aAafBEE80BBD0799Cb2BEAFaeC5";
 const OPENSEA_LINK = `https://testnets.opensea.io/collections`;
+const RARIBLE_LINK = `https://rinkeby.rarible.com/collection/${CONTRACT_ADDRESS}/items`;
 // スピナー用の変数
 const override = css`
   display: block;
@@ -182,18 +183,26 @@ const App = () => {
         { MintingFlg ?
             (
               <div>
-              <MoonLoader color="white" loading={MintingFlg} css={override} size={60} /><br/>
-              <div className="spin-color">
-                Now Minting ...
-              </div>
+                <MoonLoader color="white" loading={MintingFlg} css={override} size={60} /><br/>
+                <div className="spin-color">
+                  Now Minting ...
+                </div>
               </div>
             ) :<></>
         }
+        <div className="button-show">
         <button className="opensea-button cta-button">
           <a href={OPENSEA_LINK}>
-            OpenSeaでコレクションを見る
+            OpenSeaでNFTを見る
           </a>
         </button>
+        <br/>
+        <button className="rarible-button cta-button">
+          <a href={RARIBLE_LINK}>
+            RaribleでNFTを見る
+          </a>
+        </button>
+        </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
           <a

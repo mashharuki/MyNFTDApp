@@ -4,6 +4,7 @@ pragma solidity ^0.8.4;
 import "hardhat/console.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import { Base64 } from "./libraries/Base64.sol";
 
 contract MashNFT is ERC721URIStorage {
@@ -13,7 +14,8 @@ contract MashNFT is ERC721URIStorage {
 
     string[] Svgs = [
         "https://i.ibb.co/Dg2TpZY/mash.jpg",
-        "https://i.ibb.co/jyFVQx8/IMG-6855.jpg"
+        "https://i.ibb.co/jyFVQx8/IMG-6855.jpg",
+        "https://i.ibb.co/SdQXmBg/IMG-4792.png"
     ];
 
     event NewEpicNFTMinted(address sender, uint256 tokenId);
@@ -33,10 +35,10 @@ contract MashNFT is ERC721URIStorage {
             bytes(
                 string(
                     abi.encodePacked(
-                        '{"name": "',
-                        "MashNFT #", newItemId, 
-                        '", "description": "Mash is a faithful dog!!"', 
-                        ', "image": "',
+                        '{"name": "MashNFT #',
+                        Strings.toString(newItemId),
+                        '", "description": "Mash is a faithful dog!!"',
+                        ',"image": "',
                         image,
                         '"}'
                     )
